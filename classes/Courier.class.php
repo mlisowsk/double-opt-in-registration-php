@@ -8,7 +8,7 @@
  */
 class Courier {
     const SEND_OK = 0;
-    const SENT_FAIL = 1;
+    const SEND_FAIL = 1;
 	
 	/**
 	 * Make text rfj2047 compliant	
@@ -43,7 +43,7 @@ class Courier {
 		// Subjects are tricky.  Even some 
 		// sophisticated email clients don't
 		// understand unicode subject lines. 
-		$subject = rfc2047_sanitize($Email->subject);
+		$subject = $this->rfc2047_sanitize($Email->subject);
 		
 		$message = "";
 		
