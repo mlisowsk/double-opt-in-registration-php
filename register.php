@@ -15,7 +15,12 @@ if ($_POST) {
 		$Email->subject = "Confirm Registration";
 		$Email->recipient = $EmailRegistration->email;
 		$Email->sender = 'noreply@example.com';
-		$Email->message_html = file_get_contents('emails/register.htm');
+		$text = file_get_contents('emails/register.htm');
+		// replace placeholder for actual confirmation code in email template:
+		$Email->message_html = str_replace(
+			'{confirmationCode}',
+			$EmailRegistration->getConfirmationCode(),
+			$text);
 		$Courier = new Courier();
 		$Courier->send($Email);
 		$registered = true;
