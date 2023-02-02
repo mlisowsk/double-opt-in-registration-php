@@ -52,7 +52,7 @@ class EmailRegistration {
 	 * validate the email and create a new entry
 	 */
 	public function initialize($email) {
-		if (!preg_match(EMAIL_REGEX, $email)) {
+		if (!preg_match(self::EMAIL_REGEX, $email)) {
 			throw new Exception("Invalid email address");
 		}
 		
