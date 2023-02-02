@@ -92,7 +92,8 @@ class EmailRegistration {
 	public function fetchByConfirmationCode($confirmationCode) {
 		$sql = 'select * from `EmailRegistration` where ';
 		$sql .= '`confirmationCode`="'.$this->mysql->escape_string($confirmationCode).'"';
-		
+	
+		$this->loadFromDatabase($sql);
 	}
 	
 	/**
