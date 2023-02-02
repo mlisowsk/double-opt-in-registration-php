@@ -1,6 +1,7 @@
 <?php
 // classes/EmailRegistration.class.php
-require_once('settings.php');
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__.'/settings.php');
 
 class EmailRegistration {
 	const EMAIL_REGEX = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i";
@@ -12,6 +13,7 @@ class EmailRegistration {
 	public $unsubscribed;
 	
 	public function __construct() {
+		global $settings;
 		$this->mysql = new mysqli(
 		    $settings['mysql']['server'] = 'localhost',
 		    $settings['mysql']['username'] = 'mysqluser',
